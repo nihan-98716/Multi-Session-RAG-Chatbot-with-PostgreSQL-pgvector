@@ -116,13 +116,13 @@ python -m uvicorn main:app --reload
 1. **Access the Interface**: Open your browser to [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).
 2. **Upload a Document**:
 * Open `POST /upload`.
-* Set `session_id` to a unique ID (e.g., `user-123`).
+* Set `session_id` to a unique ID (e.g., `f47ac10b-58cc-4372-a567-0e02b2c3d479`).
 * Choose a PDF and click **Execute**.
 
 
 3. **Chat with the PDF**:
 * Open `POST /chat`.
-* Use the **same** `session_id` (`user-123`).
+* Use the **same** `session_id` (`f47ac10b-58cc-4372-a567-0e02b2c3d479`).
 * Ask a question like "What are the main points of this document?".
 
 
