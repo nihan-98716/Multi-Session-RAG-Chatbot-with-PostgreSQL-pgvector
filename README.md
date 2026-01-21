@@ -81,7 +81,12 @@ pip install fastapi uvicorn langchain langchain-classic langchain-community lang
 
 ### Step 3: Start the Database
 
-Ensure Docker is running, then start the pre-configured PostgreSQL container:
+Ensure Docker is running, 
+```bash
+docker ps
+
+```
+Then start the pre-configured PostgreSQL container:
 
 ```bash
 docker-compose up -d
