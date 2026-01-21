@@ -133,9 +133,3 @@ python -m uvicorn main:app --reload
 
 4. **Test Memory**:
 * Ask a follow-up: "Can you summarize that in 3 bullet points?". The bot will remember the previous answer.
-
-
-
---
-
-**Would you like me to generate a `requirements.txt` file content to match this README perfectly?**
