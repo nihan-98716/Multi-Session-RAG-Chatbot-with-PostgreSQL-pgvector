@@ -134,9 +134,10 @@ python -m uvicorn main:app --reload
 4. **Test Memory**:
 * Ask a follow-up: "Can you summarize that in 3 bullet points?". The bot will remember the previous answer.
 
+---
 
 ## 📐 Architecture Diagram
-
+```mermaid
 graph TD
     subgraph Client_Layer [Client Interface]
         User((User)) -->|POST /upload| API_U[Upload Endpoint]
@@ -162,3 +163,4 @@ graph TD
     style DB fill:#336791,color:#fff
     style LLM fill:#4285F4,color:#fff
     style Embed fill:#FFD21E,color:#000
+```
