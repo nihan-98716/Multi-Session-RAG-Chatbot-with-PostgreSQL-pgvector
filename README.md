@@ -133,3 +133,32 @@ python -m uvicorn main:app --reload
 
 4. **Test Memory**:
 * Ask a follow-up: "Can you summarize that in 3 bullet points?". The bot will remember the previous answer.
+
+
+## 📐 Architecture Diagram
+
+graph TD
+    subgraph Client_Layer [Client Interface]
+        User((User)) -->|POST /upload| API_U[Upload Endpoint]
+        User -->|POST /chat| API_C[Chat Endpoint]
+    end
+
+    subgraph Ingestion_Pipeline [Ingestion Pipeline]
+        API_U -->|File| PDF[PyPDF Loader]
+        PDF -->|Text| Split[Recursive Text Splitter]
+        Split -->|Chunks| Embed[Local HF Embeddings]
+        Embed -->|Vectors| DB[(PostgreSQL + pgvector)]
+    end
+
+    subgraph RAG_Core [RAG & Chat Logic]
+        API_C -->|Query| Hist[Postgres History Retrieval]
+        Hist -->|Standalone Q| Retr[Metadata-Filtered Retriever]
+        DB -->|Context Chunks| Retr
+        Retr -->|Augmented Prompt| LLM[Gemini 2.5 Flash]
+        LLM -->|Response| API_C
+        LLM -.->|Save| Hist
+    end
+
+    style DB fill:#336791,color:#fff
+    style LLM fill:#4285F4,color:#fff
+    style Embed fill:#FFD21E,color:#000
