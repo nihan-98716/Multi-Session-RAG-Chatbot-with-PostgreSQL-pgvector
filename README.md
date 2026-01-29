@@ -31,7 +31,6 @@ This project is fully orchestrated to ensure a seamless "it works on my machine"
   
 * **One-Command Orchestration:** A single docker compose up command automates the entire setup of the FastAPI API, PostgreSQL database, and pgvector extensions.
 * **Infrastructure-as-Code:** The environment is completely immutable, meaning it runs identically on any system without requiring manual Python or PostgreSQL installations.
-* **Health & Self-Healing:** Integrated health checks ensure the API only connects once the database is fully initialized, with automatic service restarts if a crash occurs.
 * **Data Persistence & Security:** Dedicated Docker volumes protect your PDF data across restarts, while internal networking keeps all database traffic isolated and secure.
 
 ---
