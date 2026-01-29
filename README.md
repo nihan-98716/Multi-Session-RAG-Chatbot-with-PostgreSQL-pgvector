@@ -40,9 +40,10 @@ This project is fully orchestrated to ensure a seamless "it works on my machine"
 
 * **Backend**: FastAPI (Python 3.12+)
 * **Orchestration**: LangChain (Modular v1.0 / `langchain-classic`)
-* **Database**: PostgreSQL + `pgvector`
+* **Vector Search & Database**: PostgreSQL + `pgvector`
 * **LLM**: Google Gemini 2.5 Flash
 * **Embeddings**: HuggingFace (Local)
+* **Containerization:** Docker & Docker Compose
 
 ---
 
@@ -98,7 +99,7 @@ DATABASE_URL=postgresql+psycopg://myuser:mypassword@db:5432/mydatabase
 ```
 
 
-*Note: Replace `your_actual_gemini_api_key_here` with the key you got from Google.*
+*Note: Replace `gemini_api_key_here` with the key you got from Google.*
 
 ### 4. Build and Run with Docker
 
