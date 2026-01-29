@@ -26,6 +26,14 @@ Unlike basic RAG setups, this chatbot maintains a **Persistent Chat History** in
 
 Utilizes **PostgreSQL with the `pgvector` extension** as the primary vector store. This allows for high-performance similarity searches directly alongside relational data.
 
+### 5. Production-Ready Docker Stack
+This project is fully orchestrated to ensure a seamless "it works on my machine" experience across any platform:
+  
+* **One-Command Orchestration:** A single docker compose up command automates the entire setup of the FastAPI API, PostgreSQL database, and pgvector extensions.
+* **Infrastructure-as-Code:** The environment is completely immutable, meaning it runs identically on any system without requiring manual Python or PostgreSQL installations.
+* **Health & Self-Healing:** Integrated health checks ensure the API only connects once the database is fully initialized, with automatic service restarts if a crash occurs.
+* **Data Persistence & Security:** Dedicated Docker volumes protect your PDF data across restarts, while internal networking keeps all database traffic isolated and secure.
+
 ---
 
 ## 🛠️ Tech Stack
