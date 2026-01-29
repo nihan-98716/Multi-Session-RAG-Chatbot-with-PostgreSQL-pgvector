@@ -48,99 +48,100 @@ This project is fully orchestrated to ensure a seamless "it works on my machine"
 
 ## 📖 Detailed Setup Guide
 
-Follow these steps exactly to run the application on your local machine.
+Follow these instructions strictly to deploy the application on any system.
 
-### Prerequisites
+### 1. Prerequisites
 
-* **Python 3.12** installed.
-* **Docker Desktop** (to run the database).
-* **Google Gemini API Key** (Get one for free at [Google AI Studio](https://aistudio.google.com/)).
+Ensure you have the following installed on your machine:
 
-### Step 1: Clone and Environment Setup
-
-1. Navigate to your project folder:
-```bash
-cd my-chatbot
-
-```
+* **Docker Desktop**: [Download here](https://www.docker.com/products/docker-desktop/). Start the application and ensure the docker engine is running (whale icon is solid not blinking).
+* **Git**: [Download here](https://www.google.com/search?q=https://git-scm.com/downloads) if not already installed.
+* **Gemini API Key**: Visit [Google AI Studio](https://aistudio.google.com/) to get your free API key.
 
 
-2. Create a Virtual Environment:
-```bash
-python -m venv chatbot_env
+### 2. Get the Source Code
 
-```
+#### Option A: Clone via Git (Recommended)
 
-
-3. Activate the Environment:
-* **Windows**: `chatbot_env\Scripts\activate`
-* **Mac/Linux**: `source chatbot_env/bin/activate`
-
-
-
-### Step 2: Install Dependencies
-
-Run the following command to install all required libraries:
+Open your terminal and run:
 
 ```bash
-pip install fastapi uvicorn langchain langchain-classic langchain-community langchain-google-genai langchain-postgres psycopg[binary] pypdf sentence-transformers python-dotenv
+git clone https://github.com/nihan-98716/Multi-Session-RAG-Chatbot-with-PostgreSQL-pgvector.git
+cd Multi-Session-RAG-Chatbot-with-PostgreSQL-pgvector
 
 ```
 
-### Step 3: Start the Database
+#### Option B: Download ZIP (If Git is not working)
 
-Ensure Docker is running, 
+If you encounter errors with `git clone`, follow these steps:
+
+1. **Download**: On this GitHub page, click the green **"<> Code"** button at the top right and select **"Download ZIP"**.
+2. **Extract**: Locate the downloaded `Multi-Session-RAG-Chatbot-main.zip` file on your computer and extract its contents.
+3. **Open in Editor**:
+* Open **Visual Studio Code** (or your preferred editor).
+* Go to `File > Open Folder...` and select the extracted folder.
+
+
+4. **Open Terminal**: In VS Code, open the integrated terminal by pressing `Ctrl + ` `.
+
+
+### 3. Environment Configuration
+
+You must provide your API key to the application using a `.env` file. This file is excluded from Git for your security.
+
+1. Create a new file named `.env` in the root folder.
+2. Paste the following content into it:
+```env
+GOOGLE_API_KEY=gemini_api_key_here
+DATABASE_URL=postgresql+psycopg://myuser:mypassword@db:5432/mydatabase
+
+```
+
+
+*Note: Replace `your_actual_gemini_api_key_here` with the key you got from Google.*
+
+### 4. Build and Run with Docker
+
+The entire stack (FastAPI + PostgreSQL + pgvector) is orchestrated via Docker Compose.
+
+1. In your terminal, run:
 ```bash
-docker ps
-
-```
-Then start the pre-configured PostgreSQL container:
-
-```bash
-docker-compose up -d
+docker compose up --build
 
 ```
 
-*Verification*: Open Docker Desktop; you should see a container named `pgvector` running on port `5432`.
 
-### Step 4: Configure Environment Variables
-
-Create a file named `.env` in the root directory and add your keys:
-
-```text
-GOOGLE_API_KEY=your_gemini_api_key_here
-DATABASE_URL=postgresql+psycopg://myuser:mypassword@localhost:5432/mydatabase
-
-```
-
-### Step 5: Run the Application
-
-Launch the FastAPI server with auto-reload:
-
-```bash
-python -m uvicorn main:app --reload
-
-```
+2. **Wait**: The first build will download the base images and install Python dependencies. This may take 5-30 minutes max depending on the internet speed.
+3. **Success**: When you see `Uvicorn running on http://0.0.0.0:8000`, the app is ready!
 
 ---
 
-## 🧪 How to Use
+## 🧪 Testing the Chatbot
 
-1. **Access the Interface**: Open your browser to [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).
-2. **Upload a Document**:
-* Open `POST /upload`.
-* Set `session_id` to a unique ID (e.g., `f47ac10b-58cc-4372-a567-0e02b2c3d479`).
-* Choose a PDF and click **Execute**.
+### Phase A: Upload a PDF
 
+1. Open your browser to `http://localhost:8000/docs`.
+2. Locate the **`POST /upload`** endpoint and click **"Try it out"**.
+3. In the `session_id` field, enter a unique ID (e.g., `f47ac10b-58cc-4372-a567-0e02b2c3d479`, make sure the string matches the 36-character format of the database schema).
+4. Upload a PDF file and click **"Execute"**.
 
-3. **Chat with the PDF**:
-* Open `POST /chat`.
-* Use the **same** `session_id` (`f47ac10b-58cc-4372-a567-0e02b2c3d479`).
-* Ask a question like "What are the main points of this document?".
+### Phase B: Chat with the PDF
 
+1. Locate the **`POST /chat`** endpoint and click **"Try it out"**.
+2. Use the **same** `session_id` from the upload step.
+3. Enter your question in the `query` field (e.g., "What is this document about?") and click **"Execute"**.
 
-4. **Test Memory**:
-* Ask a follow-up: "Can you summarize that in 3 bullet points?". The bot will remember the previous answer.
+---
+
+## 🧹 Cleanup and Reset
+
+To stop the services and completely reset the database (delete all history and vectors), run:
+
+```bash
+docker compose down -v
+
+```
+
 
 ---
 
