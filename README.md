@@ -130,7 +130,8 @@ docker compose up --build
 1. Locate the **`POST /chat`** endpoint and click **"Try it out"**.
 2. Use the **same** `session_id` from the upload step.
 3. Enter your question in the `query` field (e.g., "What is this document about?") and click **"Execute"**.
-
+4. Try reloading the page, then asking the chatbot another question with the same session ID.
+   
 ---
 
 ## 🧹 Cleanup and Reset
