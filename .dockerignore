@@ -1,0 +1,5 @@
+chatbot_env/
+__pycache__/
+.env
+.git/
+*.pdf
