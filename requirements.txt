@@ -9,3 +9,4 @@ psycopg[binary,pool]
 pypdf
 python-dotenv
 sentence-transformers
+langchain_community
