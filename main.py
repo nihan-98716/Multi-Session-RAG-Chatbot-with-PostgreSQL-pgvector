@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 # LangChain & AI Imports
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_community.embeddings import HuggingFaceEmbeddings # Used for local and fast embeddings
+from langchain_huggingface import HuggingFaceEmbeddings # Used for local and fast embeddings
 from langchain_postgres import PGVector, PostgresChatMessageHistory
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -135,4 +135,5 @@ async def chat_with_bot(session_id: str, query: str):
         return {"answer": result["answer"]}
 
     except Exception as e:
+
         raise HTTPException(status_code=500, detail=str(e))
