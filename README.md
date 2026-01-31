@@ -111,7 +111,7 @@ pip install -r requirements.txt
 ```
 This prevents *imports not resolved error*.
 
-2 . In your terminal, run:
+2. In your terminal, run:
 ```bash
 docker compose up --build
 
