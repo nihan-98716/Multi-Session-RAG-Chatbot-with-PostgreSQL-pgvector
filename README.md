@@ -104,15 +104,21 @@ DATABASE_URL=postgresql+psycopg://myuser:mypassword@db:5432/mydatabase
 
 The entire stack (FastAPI + PostgreSQL + pgvector) is orchestrated via Docker Compose.
 
-1. In your terminal, run:
+1. Firstly, run:
+```bash
+pip install -r requirements.txt
+
+```
+This prevents *imports not resolved error*.
+
+2 . In your terminal, run:
 ```bash
 docker compose up --build
 
 ```
 
-
-2. **Wait**: The first build will download the base images and install Python dependencies. This may take 5-30 minutes max depending on the internet speed.
-3. **Success**: When you see `Uvicorn running on http://0.0.0.0:8000`, the app is ready!
+3. **Wait**: The first build will download the base images and install Python dependencies. This may take 5-30 minutes max depending on the internet speed.
+4. **Success**: When you see `Uvicorn running on http://0.0.0.0:8000`, the app is ready!
 
 ---
 
