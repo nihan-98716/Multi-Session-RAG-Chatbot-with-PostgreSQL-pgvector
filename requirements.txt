@@ -3,6 +3,7 @@ uvicorn
 langchain
 langchain-openai
 langchain-postgres
+langchain-google-genai
 psycopg[binary,pool]
 pypdf
 python-dotenv
