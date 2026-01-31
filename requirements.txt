@@ -1,10 +1,11 @@
+python-multipart
+langchain-huggingface
+langchain-google-genai
 fastapi
 uvicorn
 langchain
-langchain-openai
 langchain-postgres
-langchain-google-genai
 psycopg[binary,pool]
 pypdf
 python-dotenv
-langchain_community
+sentence-transformers
