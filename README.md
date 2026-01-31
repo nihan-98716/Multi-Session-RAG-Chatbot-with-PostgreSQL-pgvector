@@ -48,7 +48,7 @@ This project is fully orchestrated to ensure a seamless "it works on my machine"
 
 ## 📖 Detailed Setup Guide
 
-Follow these instructions strictly to deploy the application on any system.
+Follow these instructions strictly to deploy the application on any system. (Cannot be run inside a venv)
 
 ### 1. Prerequisites
 
