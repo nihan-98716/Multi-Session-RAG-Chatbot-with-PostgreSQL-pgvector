@@ -16,7 +16,7 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 load_dotenv()
 
-app = FastAPI(title="AI Residency RAG Chatbot")
+app = FastAPI(title="RAG Chatbot")
 
 # Database and Local Embeddings Setup
 DB_URL = os.getenv("DATABASE_URL", "postgresql+psycopg://myuser:mypassword@localhost:5432/mydatabase")
@@ -137,3 +137,4 @@ async def chat_with_bot(session_id: str, query: str):
     except Exception as e:
 
         raise HTTPException(status_code=500, detail=str(e))
+
