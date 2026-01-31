@@ -87,7 +87,7 @@ If you encounter errors with `git clone`, follow these steps:
 
 ### 3. Environment Configuration
 
-You must provide your API key to the application using a `.env` file. This file is excluded from Git for your security.
+You must provide your API key to the application using a `.env` file. This file is excluded from Git for your security. (A new .env file must be made or else the application won't work)
 
 1. Create a new file named `.env` in the root folder.
 2. Paste the following content into it:
