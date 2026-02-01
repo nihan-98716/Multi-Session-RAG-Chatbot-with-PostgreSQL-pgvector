@@ -1,6 +1,6 @@
 # Multi-Session RAG Chatbot with PostgreSQL & pgvector
 
-A production-ready Retrieval-Augmented Generation (RAG) API built with **FastAPI**, **LangChain**, and **PostgreSQL**. This system allows users to upload PDF documents, index them into a vector database, and engage in context-aware conversations where the AI "remembers" both the uploaded document details and the chat history.
+A production-ready Retrieval-Augmented Generation (RAG) API built with **FastAPI**, **LangChain**, **PostgreSQL**, and **Docker**. This system allows users to upload PDF documents, index them into a vector database, and engage in context-aware conversations where the AI "remembers" both the uploaded document details and the chat history.
 
 ## 🚀 Key Technical Features
 
